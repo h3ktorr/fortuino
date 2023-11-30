@@ -1,13 +1,361 @@
-body {
+/* 
+====== 
+Variables 
+======
+*/
+:root {
+  --primaryLightColor: #d4e6a5;
+  --primaryColor: #476a2e;
+  --primaryDarkColor: #c02c03;
+  --mainWhite: #fff;
+  --offWhite: #f7f7f7;
+  --mainBackground: #f1f5f8;
+  --mainOverlay: rgba(35, 10, 36, 0.4);
+  --mainBlack: #222;
+  --mainGrey: #ececec;
+  --darkGrey: #afafaf;
+  --mainRed: #bd0303;
+  --mainTransition: all 0.3s linear;
+  --mainSpacing: 0.3rem;
+  --lightShadow: 0px 5px 3px 0px rgba(0, 0, 0, 0.5);
+  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --mainBorderRadius: 0.25rem;
+  --smallWidth: 85vw;
+  --maxWidth: 40rem;
+  --fullWidth: 1170px;
+}
+/* 
+====== 
+Global Styles 
+======
+*/
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: var(--mainBlack);
+  background: var(--mainBackground);
+  line-height: 1.4;
+  font-size: 1rem;
+  font-weight: 300;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--slantedFont);
+  margin-bottom: 1.25rem;
+  letter-spacing: var(--mainSpacing);
+}
+p {
+  margin-bottom: 1.25rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--mainBlack);
+}
+img {
+  width: 100%;
+  display: block;
+}
+
+/* 
+====== 
+Buttons 
+======
+*/
+.btn,
+.btn-white,
+.btn-primary {
+  text-transform: uppercase;
+  letter-spacing: var(--mainSpacing);
+  color: var(--primaryColor);
+  border: 2px solid var(--primaryColor);
+  padding: 0.45rem 0.8rem;
+  display: inline-block;
+  transition: var(--mainTransition);
+  cursor: pointer;
+  font-size: 0.8rem;
+  background: transparent;
+  border-radius: var(--mainBorderRadius);
+  display: inline-block;
+}
+.btn:hover {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+}
+.btn-white {
+  background: transparent;
+  color: var(--mainWhite);
+  border-color: var(--mainWhite);
+}
+.btn-white:hover {
+  background: var(--mainWhite);
+  color: var(--primaryColor);
+}
+.btn-primary {
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  border-color: transparent;
+}
+.btn-primary:hover {
+  background: var(--primaryLightColor);
+  color: var(--primaryColor);
+}
+.btn-block {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  box-shadow: var(--lightShadow);
+  text-align: center;
+}
+.btn-details {
+  padding: 0.25rem 0.4rem;
+}
+.btn-details:hover {
+  background: var(--primaryLightColor);
+  border-color: var(--primaryLightColor);
+}
+
+.router{
+  display: flex;
+  flex-direction: column;
+}
+/* 
+====== 
+Navbar
+======
+*/
+.navbar {
+  background: var(--mainWhite);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--primaryColor);
+  box-shadow: var(--lightShadow);
+}
+.nav-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--smallWidth);
+  margin: 0 auto;
+  max-width: var(--fullWidth);
+}
+.nav-header{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-links {
+  display: none;
+  align-items: center;
+}
+.nav-links a {
+  text-transform: capitalize;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  padding: 0.25rem 0.5rem;
+  transition: var(--mainTransition);
+}
+.nav-links a:hover {
+  color: var(--primaryColor);
+}
+.logo {
+  width: 6rem;
+  border-radius: 5px;
+} 
+
+@media screen and (min-width: 800px){
+  .nav-links{
+    display: flex;
+  }
+  .nav-toggle{
+    display: none;
+  }
+}
+/* 
+====== 
+Sidebar
+======
+*/
+
+.sidebar-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  z-index: -1;
+  transition: all .5s;
+}
+
+.sidebar-wrapper.show{
+  visibility: visible;
+  z-index: 2;
+}
+
+.sidebar{
+  width: 90vw;
+  height: 95vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-sidebar{
+  align-self: flex-end;
+  margin: 20px 20px;
+}
+
+.sidebar-links{
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.sidebar-link{
+  border-bottom: 3px solid #000;
+  margin: 7px;
+}
+
+/* 
+====== 
+Hero
+======
+*/
+
+.hero{
+  background: #000;
+  color: #fff;
+  text-align: center;
+  margin: 15px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: var(--darkShadow)
+}
+
+/* 
+====== 
+Footer
+======
+*/
+
+.footer{
+  margin: 15px;
+  background: #000;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  box-shadow: var(--darkShadow);
+  justify-self: flex-end;
+}
+
+.footer-terms{
+  color: #fff;
+}
+
+.footer-bottom{
+  background: gray;
+  color: #000;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 800px){
+  
+}
+
+/* 
+====== 
+Home
+======
+*/
+
+.page-center{
+  margin: 15px;
+  box-shadow: var(--lightShadow);
+  padding: 5px;
+  background-color: #fff;
+}
+
+.main-page{
+  text-align: center;
+  padding: 10px 0;
+  height: 100%;
+  
+}
+
+.welcome-image{
+  background: url(./images/asia-1793425_1280.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  animation: welcome-img 10s ease-in-out infinite;
+}
+
+@keyframes welcome-img{
+  25%{
+    background: url(./images/beautiful-1687955_1280.jpg);
+  }
+  50%{
+    background: url(./images/beautiful-girl-2003650_1280.jpg);
+  }
+  75%{
+    background: url(./images/kids-2408614_1280.jpg);
+  }
+  100%{
+    background: url(./images/man-2425121_1280.jpg);
+  }
+}
+
+.welcome-image > *{
+  color: #fff;
+  width: 10rem;
+  font-size: .9rem;
+}
+
+.main-text{
+  text-align: center;
+}
+
+.main-information{
+  margin: 15px;
+}
+
+.information-btn{
+  margin: 5px 0;
+}
+
+@media screen and (min-width: 800px){
+  .main-information{
+    display: grid;
+    grid-gap: 10px;
+    grid-row: 1fr 1fr;
+  }
+}
+
+/* 
+====== 
+About
+======
+*/
