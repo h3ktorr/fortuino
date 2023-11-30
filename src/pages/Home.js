@@ -30,12 +30,12 @@ const Home = () => {
           Fortuino for yourself and your loved ones.
         </p>
       </div>
-      <div className="page-center main-page">
+      <div className="main-portfolio page-center">
         <button className="btn ">
           <Link to="/register">Register</Link>
         </button>
         <h3>PORTFOLIOS AT YOUR SERVICE</h3>
-        <p className="main-text">
+        <p className="portfolio-text">
           Portfolios are tailored to align with individual investment objectives
           and preferences. Recognizing the uniqueness of each investor's
           journey, we stand by our clients as dedicated partners, attentively
@@ -48,15 +48,51 @@ const Home = () => {
           preferences and risk appetites, providing clients with a range of
           options to align with their financial goals.
         </p>
-        <div>
-          {Portfolio.map(item => {
-            const {id, title, description, features} = item;
-            return <div key={id}>
-              <h3>{title}</h3>
-              <p>Description: {description}</p>
-              <p>Key Features: {features}</p>
-            </div>
+        <div className="portfolios">
+          {Portfolio.map((item) => {
+            const { id, title, description, features } = item;
+            return (
+              <div key={id} className="single-portfolio">
+                <h3>{title}</h3>
+                <p>Description: {description}</p>
+                <p>Key Features: {features}</p>
+              </div>
+            );
           })}
+        </div>
+      </div>
+      <div className="page-center">
+        <div>
+          <h3>Unified Goals</h3>
+          <p>
+            As our stakeholders are also our partners, our objectives are
+            harmoniously intertwined, enabling us to prioritize your needs and
+            aspirations.
+          </p>
+        </div>
+        <div>
+          <h3>Decisive Actions</h3>
+          <p>
+            With our investors as our co-owners, we execute decisions with
+            unwavering confidence in alignment with the investment themes
+            significant to you.
+          </p>
+        </div>
+        <div>
+          <h3>Enduring Vision</h3>
+          <p>
+            With investors doubling as owners, our attention spans the long-term
+            horizon, steering clear of transient quarterly results in favor of
+            enduring success.
+          </p>
+        </div>
+        <div>
+          <h3>Economical Solutions</h3>
+          <p>
+            Being owned by our investors empowers us to perpetually share the
+            benefits of scale, consistently reducing the cost of investment,
+            ensuring you retain a larger portion of your returns.
+          </p>
         </div>
       </div>
       <ul className="main-information">

@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react'
-import { useCallback } from 'react'
+// import { useCallback } from 'react'
 
 const btcUrl =
-  "https://alpha-vantage.p.rapidapi.com/query?from_currency=BTC&function=CURRENCY_EXCHANGE_RATE&to_currency=USD";
+"https://alpha-vantage.p.rapidapi.com/query?from_currency=BTC&function=CURRENCY_EXCHANGE_RATE&to_currency=USD";
 const btcOptions = {
   method: "GET",
   headers: {
@@ -10,14 +10,6 @@ const btcOptions = {
     "X-RapidAPI-Host": "alpha-vantage.p.rapidapi.com",
   },
 };
-
-try {
-  const response = await fetch(btcUrl, btcOptions);
-  const result = await response.json();
-  console.log(result);
-} catch (error) {
-  console.error(error);
-}
 
 const forexUrl =
   "https://alpha-vantage.p.rapidapi.com/query?function=FX_INTRADAY&interval=5min&to_symbol=USD&from_symbol=EUR&datatype=json&outputsize=compact";
@@ -29,14 +21,6 @@ const forexOptions = {
   },
 };
 
-try {
-  const response = await fetch(forexUrl, forexOptions);
-  const result = await response.text();
-  console.log(result);
-} catch (error) {
-  console.error(error);
-}
-
 const stocksUrl =
   "https://alpha-vantage.p.rapidapi.com/query?interval=5min&function=TIME_SERIES_INTRADAY&symbol=MSFT&datatype=json&output_size=compact";
 const stocksOptions = {
@@ -47,15 +31,6 @@ const stocksOptions = {
   },
 };
 
-try {
-  const response = await fetch(stocksUrl, stocksOptions);
-  const result = await response.text();
-  console.log(result);
-} catch (error) {
-  console.error(error);
-}
-
-
 
 
 const AppContext = React.createContext()
@@ -63,6 +38,45 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [btcData, setBtcData] = useState({});
+  const [forexData, setForexData] = useState({});
+  const [stocksData, setStocksData] = useState({});
+
+  const getBtcData = async() => {
+    try {
+      const response = await fetch(btcUrl, btcOptions);
+      const result = await response.json();
+      console.log(result["Realtime Currency Exchange Rate"]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  const getForexData = async() => {
+    try {
+      const response = await fetch(forexUrl, forexOptions);
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  const getStocksData = async() => {
+    try {
+      const response = await fetch(stocksUrl, stocksOptions);
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
+  // useEffect(()=>{
+  //   getBtcData()
+  //   getForexData()
+  //   getStocksData()
+  // }, [])
   
   const openSidebar = () => {
     setIsSidebarOpen(true)

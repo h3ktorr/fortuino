@@ -293,7 +293,7 @@ Home
   background-color: #fff;
 }
 
-.main-page{
+.main-portfolio{
   text-align: center;
   padding: 10px 0;
   height: 100%;
@@ -316,15 +316,23 @@ Home
 @keyframes welcome-img{
   25%{
     background: url(./images/beautiful-1687955_1280.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   50%{
     background: url(./images/beautiful-girl-2003650_1280.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   75%{
     background: url(./images/kids-2408614_1280.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   100%{
     background: url(./images/man-2425121_1280.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 }
 
@@ -333,9 +341,25 @@ Home
   width: 10rem;
   font-size: .9rem;
 }
-
-.main-text{
+ 
+.portfolio-text{
   text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+  .portfolios{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .single-portfolio{
+    padding: 10px;
+  }
+  .main-information{
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
 
 .main-information{
@@ -346,16 +370,27 @@ Home
   margin: 5px 0;
 }
 
-@media screen and (min-width: 800px){
-  .main-information{
-    display: grid;
-    grid-gap: 10px;
-    grid-row: 1fr 1fr;
-  }
-}
-
 /* 
 ====== 
 About
 ======
 */
+
+.about-mission{
+  display: flex;
+  overflow: scroll;
+}
+
+.mission-img{
+  width: 300px;
+  height: 200px;
+}
+
+.mission{
+  margin: 15px;
+  padding: 10px;
+  
+}
+.who-we-serve{
+  text-align: center;
+}
