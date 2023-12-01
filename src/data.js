@@ -58,25 +58,40 @@ export const missions = [
     id: 1,
     image: finance,
     title: "Financial Well-Being",
-    body: "We help millions of people invest to build savings that serve them throughout their lives. As it becomes harder to save for goals like retirement, how can we help more people invest for their future? <br/> Better retirement for all",
+    body: "We help millions of people invest to build savings that serve them throughout their lives. As it becomes harder to save for goals like retirement, how can we help more people invest for their future? Better retirement for all",
   },
   {
     id: 2,
     image: investment,
     title: "Investment Access",
-    body: "We make investing easier and more affordable. How can we use our expertise to help more and more people invest? <br> Investing with iShares",
+    body: "We make investing easier and more affordable. How can we use our expertise to help more and more people invest? Investing with iShares",
   },
   {
     id: 3,
     image: sustainable,
     title: "Acting as a Fiduciary",
-    body: "Our investment approach is informed by three principles: we start by understanding the client’s investment objectives; we seek the best risk-adjusted returns within the scope of the mandate they give us; and we underpin our work withresearch, data, and analytics. We apply those same principles to sustainability and the low-carbon transition. <br> Explore sustainability at Fortuino",
+    body: "Our investment approach is informed by three principles: we start by understanding the client’s investment objectives; we seek the best risk-adjusted returns within the scope of the mandate they give us; and we underpin our work withresearch, data, and analytics. We apply those same principles to sustainability and the low-carbon transition. Explore sustainability at Fortuino",
   },
   {
     id: 4,
     image: inclusive,
     title: "Resilient Economies",
     body: "Our purpose is to help more and more people experience financial well-being. In addition to offering our clients choice to meet their investment goals, we also work to bring economic opportunities to more people through the Fortuino Foundation and our employee engagement programs.",
+  },
+];
+
+export const menus = [
+  {
+    id: "2000+",
+    text: "Employees In our office",
+  },
+  {
+    id: "1M+",
+    text: "We help more than 1 million individual and cooperation invest and save",
+  },
+  {
+    id: "50000+",
+    text: "Us financial advisors use Fortuino to help build client portfolio",
   },
 ];
 

@@ -1,14 +1,49 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import { missions } from '../data'
+import React, {useEffect, useState} from 'react'
+// import {Link} from 'react-router-dom'
+import { missions, menus } from '../data'
 import { IoPeople } from "react-icons/io5"
 import { PiChatsCircleDuotone } from "react-icons/pi"
 import { SlGlobeAlt } from "react-icons/sl";
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
+import {useGlobalContext} from '../context'
+
 
 const About = () => {
+  const [allMissions, setAllMissions] = useState(missions)
+  const [index, setIndex] = useState(0)
+  const [aboutService, setAboutService] = useState('')
+  const {openSubmenu, isSubmenuOpen} = useGlobalContext()
+
+  const handleDisplay = (e) => {
+    const about = e.target.textContent;
+    const service = menus.find((item) => item.id === about);
+
+    setAboutService(service.text)
+    openSubmenu();
+  }
+
+  useEffect(()=>{
+    const lastIndex = allMissions.length - 1;
+    if(index < 0){
+      setIndex(lastIndex)
+    }
+    if(index > lastIndex){
+      setIndex(0)
+    }
+  },[index, allMissions])
+
+  useEffect(()=>{
+    let slider = setInterval(()=>{
+      setIndex(currentIndex => currentIndex+1)
+    }, 5000)
+    return () => {
+      clearInterval(slider)
+    }
+  }, [index])
+
   return (
     <>
-      <div className="page-center">
+      <div className="page-center about-page">
         <h2>About Fortuino</h2>
         <div>
           <p>
@@ -25,16 +60,34 @@ const About = () => {
         </div>
         <h3>Our Focus</h3>
         <div className="about-mission">
-          {missions.map((mission) => {
+          {allMissions.map((mission, missionIndex) => {
             const { id, image, title, body } = mission;
+            let position = "nextSlide";
+
+            if (missionIndex === index) {
+              position = "activeSlide";
+            }
+            if (
+              missionIndex === index - 1 ||
+              (index === 0 && missionIndex === allMissions.length - 1)
+            ) {
+              position = "lastSlide";
+            }
+
             return (
-              <div key={id} className="mission">
+              <div key={id} className={`${position} article`}>
                 <img src={image} className="mission-img" />
                 <h4>{title}</h4>
                 <p>{body}</p>
               </div>
             );
           })}
+          <button className="prev" onClick={() => setIndex(index - 1)}>
+            <FiChevronLeft />
+          </button>
+          <button className="next" onClick={() => setIndex(index + 1)}>
+            <FiChevronRight />
+          </button>
         </div>
         <h3>Who we are</h3>
         <p>
@@ -89,29 +142,31 @@ const About = () => {
           <br />
           <br />
         </p>
-
-        <div className="who-we-serve">
+        <div className="about-service">
           <h3>Who We Serve</h3>
-          <article className="services">
-            <IoPeople className="about-icons" />
-            <h4>2000+ employees</h4>
-            <p>In our office</p>
-          </article>
-          <article className="services">
-            <PiChatsCircleDuotone className="about-icons" />
-            <h4>1M+</h4>
-            <p>
+          <div className="who-we-serve">
+            <article className="services">
+              <IoPeople className="about-icons" />
+              <h4 onMouseOver={handleDisplay}>2000+</h4>
+              {/* <p>Employees In our office</p> */}
+            </article>
+            <article className="services">
+              <PiChatsCircleDuotone className="about-icons" />
+              <h4 onMouseOver={handleDisplay}>1M+</h4>
+              {/* <p>
               We help more than 1 million individual and cooperation invest and
               save
-            </p>
-          </article>
-          <article className="services">
-            <SlGlobeAlt className="about-icons" />
-            <h4>50000+ </h4>
-            <p>
+            </p> */}
+            </article>
+            <article className="services">
+              <SlGlobeAlt className="about-icons" />
+              <h4 onMouseOver={handleDisplay}>50000+</h4>
+              {/* <p>
               Us financial advisors use Fortuino to help build client portfolio
-            </p>
-          </article>
+            </p> */}
+            </article>
+          </div>
+          {isSubmenuOpen && <p className="submenu show">{aboutService}</p>}
         </div>
         <p>
           At Fortuino, we believe we’re at our best when our employees connect

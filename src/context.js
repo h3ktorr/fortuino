@@ -38,6 +38,7 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
   const [btcData, setBtcData] = useState({});
   const [forexData, setForexData] = useState({});
   const [stocksData, setStocksData] = useState({});
@@ -71,7 +72,15 @@ const AppProvider = ({ children }) => {
       console.error(error);
     }
   }
-  
+
+  const openSubmenu = (text, coordinates) => {
+    setIsSubmenuOpen(true)
+  }
+
+  const closeSubmenu = () => {
+    setIsSubmenuOpen(false)
+  }
+   
   // useEffect(()=>{
   //   getBtcData()
   //   getForexData()
@@ -91,7 +100,10 @@ const AppProvider = ({ children }) => {
       loading,
       isSidebarOpen,
       openSidebar,
-      closeSidebar
+      closeSidebar,
+      isSubmenuOpen,
+      openSubmenu,
+      closeSubmenu,
     }}
     >
     {children}
