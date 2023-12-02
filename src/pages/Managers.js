@@ -6,12 +6,12 @@ const Managers = () => {
   return (
     <section className='page-center'>
       <h2>Portfolio Managers</h2>
-      <ul>
+      <ul className='managers'>
         {managers.map(manager => {
           const {id, name, image, position} = manager;
-          return <li key={id}>
+          return <li key={id} className='single-manager'>
             <Link to={`/manager/${id}`}>
-              <img src={image} />
+              <img src={image} className='manager-img'/>
               <h3>{name}, {position}</h3>
               <p>Read More</p> 
             </Link>

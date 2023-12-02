@@ -591,11 +591,11 @@ Register
   Contact
   ======
   */
-
-.contact-form {
-  width: 100%;
-  margin: 0;
-}
+  
+  .contact-form {
+    width: 100%;
+    margin: 0;
+  }
 
 .contact-container {
   display: grid;
@@ -619,3 +619,28 @@ h5 {
     align-items: center;
   }
 }
+
+  /* 
+  ====== 
+  Managers
+  ======
+  */
+
+  .managers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .manager-img{
+    width: 200px;
+    margin-left: 30px;
+  }
+
+  .single-manager{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+

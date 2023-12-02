@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Select from 'react-select';
 import {Link} from 'react-router-dom'
 import Alert from '../components/Alert'
 import { FaRegUser } from 'react-icons/fa'
@@ -6,6 +7,12 @@ import { FaEnvelope } from 'react-icons/fa'
 import { FaLock } from 'react-icons/fa'
 
 const Register = () => {
+  const [isSearchable, setIsSearchable] = useState(true);
+  const [isClearable, setIsClearable] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isRtl, setIsRtl] = useState(false);
+
   const [newAlert, setNewAlert] = useState({
     show: false,
     type: '',
@@ -17,6 +24,19 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
   }
+
+const Checkbox = ({ children, ...props }) => (
+  <label style={{ marginRight: '1em' }}>
+    <input type="checkbox" {...props} />
+    {children}
+  </label>
+);
+
+const colourOptions = [
+  
+]
+
+
   return (
     <section className="page-center">
       <form onSubmit={handleSubmit} className="form contact-form">
@@ -87,6 +107,60 @@ const Register = () => {
             <option>$$100001 and above</option>
           </select>
         </div>
+        <Select
+          className="basic-single"
+          classNamePrefix="select"
+          defaultValue={colourOptions[0]}
+          isDisabled={isDisabled}
+          isLoading={isLoading}
+          isClearable={isClearable}
+          isRtl={isRtl}
+          isSearchable={isSearchable}
+          name="color"
+          options={colourOptions}
+        />
+
+        <div
+          style={{
+            color: "hsl(0, 0%, 40%)",
+            display: "inline-block",
+            fontSize: 12,
+            fontStyle: "italic",
+            marginTop: "1em",
+          }}
+        >
+          <Checkbox
+            checked={isClearable}
+            onChange={() => setIsClearable((state) => !state)}
+          >
+            Clearable
+          </Checkbox>
+          <Checkbox
+            checked={isSearchable}
+            onChange={() => setIsSearchable((state) => !state)}
+          >
+            Searchable
+          </Checkbox>
+          <Checkbox
+            checked={isDisabled}
+            onChange={() => setIsDisabled((state) => !state)}
+          >
+            Disabled
+          </Checkbox>
+          <Checkbox
+            checked={isLoading}
+            onChange={() => setIsLoading((state) => !state)}
+          >
+            Loading
+          </Checkbox>
+          <Checkbox
+            checked={isRtl}
+            onChange={() => setIsRtl((state) => !state)}
+          >
+            RTL
+          </Checkbox>
+        </div>
+
         <button type="submit" className="btn">
           Submit
         </button>

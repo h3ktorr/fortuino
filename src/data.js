@@ -1,11 +1,10 @@
-import React from "react";
 import inclusive from './images/inclusive-economies-au.png'
 import finance from './images/financial-security-au.webp'
 import sustainable from './images/sustainable-outcomes-au.png'
 import investment from './images/investment-access-au.png'
-import benjamin from './images/benjamin-scott-lg.jpg'
-import christopher from './images/christopher-roberts-md.jpg'
-import ryan from './images/ryan-daniel-md.jpg'
+import benjamin from './images/benjamin.jpg'
+import christopher from './images/christopher.jpg'
+import ryan from './images/ryan.jpg'
 
 export const links = [
   {

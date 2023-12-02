@@ -105,6 +105,12 @@ const Home = () => {
           );
         })}
       </ul>
+      <div>
+        <h3>Financial News</h3>
+        <div>
+          
+        </div>
+      </div>
     </main>
   );
 };
