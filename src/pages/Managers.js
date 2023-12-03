@@ -18,7 +18,7 @@ const Managers = () => {
           </li>
         })}
       </ul>
-      
+       
     </section>
   )
 }

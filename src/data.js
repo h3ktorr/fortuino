@@ -129,7 +129,7 @@ export const managers = [
   },
   {
     id: 2,
-    name: "Christopher Roberts ",
+    name: "Christopher Roberts",
     image: christopher,
     position: "CFA,JD",
     information: `Christopher Robert, CFA, JD, Managing Director and portfolio manager, is a member of the Global Allocation team within

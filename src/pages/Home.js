@@ -1,10 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { informations, Portfolio } from "../data";
+import {useGlobalContext} from '../context'
+import Loading from "../components/Loading";
 
 const Home = () => {
+  const { forexNewsData, btcNewsData, loading } = useGlobalContext;
   return (
-    <main>
+    <main className="main">
       <div className="welcome-text page-center">
         <p>
           The capital entrusted to us is not merely currency; it represents the
@@ -17,6 +20,16 @@ const Home = () => {
           wealth, and securing a steadfast retirement.
         </p>
       </div>
+      <ul className="main-information">
+        {informations.map((information) => {
+          const { id, name, route } = information;
+          return (
+            <li key={id} className="btn information-btn">
+              <Link to={route}>{name}</Link>
+            </li>
+          );
+        })}
+      </ul>
       <div className="welcome-image">
         <h3>
           At Fortuino, you're not just a client, you're a valued member.
@@ -54,15 +67,19 @@ const Home = () => {
             return (
               <div key={id} className="single-portfolio">
                 <h3>{title}</h3>
-                <p>Description: {description}</p>
-                <p>Key Features: {features}</p>
+                <p>
+                  <span>Description:</span> {description}
+                </p>
+                <p>
+                  <span>Key Features:</span> {features}
+                </p>
               </div>
             );
           })}
         </div>
       </div>
       <div className="page-center">
-        <div>
+        <div className='doings'>
           <h3>Unified Goals</h3>
           <p>
             As our stakeholders are also our partners, our objectives are
@@ -70,7 +87,7 @@ const Home = () => {
             aspirations.
           </p>
         </div>
-        <div>
+        <div className='doings'>
           <h3>Decisive Actions</h3>
           <p>
             With our investors as our co-owners, we execute decisions with
@@ -78,7 +95,7 @@ const Home = () => {
             significant to you.
           </p>
         </div>
-        <div>
+        <div className='doings'>
           <h3>Enduring Vision</h3>
           <p>
             With investors doubling as owners, our attention spans the long-term
@@ -86,7 +103,7 @@ const Home = () => {
             enduring success.
           </p>
         </div>
-        <div>
+        <div className='doings'>
           <h3>Economical Solutions</h3>
           <p>
             Being owned by our investors empowers us to perpetually share the
@@ -95,20 +112,15 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <ul className="main-information">
-        {informations.map((information) => {
-          const { id, name, route } = information;
-          return (
-            <li key={id} className="btn information-btn">
-              <Link to={route}>{name}</Link>
-            </li>
-          );
-        })}
-      </ul>
       <div>
         <h3>Financial News</h3>
         <div>
-          
+          {/* {loading ? <Loading /> : forexNewsData.map((news, newsIndex) => {
+            const {title, url} = news;
+            <li key={newsIndex}>
+              <a href={url}>{title}</a>
+            </li>
+          }) } */}
         </div>
       </div>
     </main>

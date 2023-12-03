@@ -8,8 +8,8 @@ const Manager = () => {
   const {name, position, image, information} = manager;
   
   return (
-    <section className='page-center'>
-      <img src={image} alt='manager-image' />
+    <section className='page-center manager-page'>
+      <img src={image} alt='manager-image' className='manager-img' />
       <h3>{name}</h3>
       <p>{information}</p>
     </section>

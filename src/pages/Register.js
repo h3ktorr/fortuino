@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Select from 'react-select';
 import {Link} from 'react-router-dom'
 import Alert from '../components/Alert'
@@ -7,11 +7,13 @@ import { FaEnvelope } from 'react-icons/fa'
 import { FaLock } from 'react-icons/fa'
 
 const Register = () => {
-  const [isSearchable, setIsSearchable] = useState(true);
-  const [isClearable, setIsClearable] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [isRtl, setIsRtl] = useState(false);
+  const firstNameRef = useRef(null)
+  const lastNameRef = useRef(null)
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+  const passwordRetypeRef = useRef(null)
+  const investmentRef = useRef(null) 
+  const regionalRef = useRef(null) 
 
   const [newAlert, setNewAlert] = useState({
     show: false,
@@ -23,25 +25,58 @@ const Register = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(!firstNameRef.current.value){
+      showAlert(true, 'danger', 'Enter First Name')
+    }
+    else if(!lastNameRef.current.value){
+      showAlert(true, 'danger', 'Enter Last Name')
+    }
+    else if(!emailRef.current.value){
+      showAlert(true, 'danger', 'Enter Email')
+    }
+    else if(!passwordRef.current.value){
+      showAlert(true, 'danger', 'Enter Password')
+    }
+    else if(passwordRetypeRef.current.value !== passwordRef.current.value){
+      showAlert(true, 'danger', 'Passwords do not match')
+    }
+    else if(investmentRef.current.value === investmentOptions[0]){
+      showAlert(true, 'danger', 'Enter Investment Category')
+    }
+    else if(regionalRef.current.value === regionOptions[0]){
+      showAlert(true, 'danger', 'Enter Region')
+    }
+    else{
+      showAlert(true, 'success', 'Successfull')
+      firstNameRef.current.value = ''
+      lastNameRef.current.value = ''
+      emailRef.current.value = ''
+      passwordRef.current.value = ''
+      passwordRetypeRef.current.value = ''
+    }
   }
 
-const Checkbox = ({ children, ...props }) => (
-  <label style={{ marginRight: '1em' }}>
-    <input type="checkbox" {...props} />
-    {children}
-  </label>
-);
-
-const colourOptions = [
-  
+const investmentOptions = [
+  {value: '', label: 'Select Investment Category'},
+  {value: 'cookie', label: 'Cookie [$100 - $1000]'},
+  {value: 'bread', label: 'Bread [$1000 - $10000]'},
+  {value: 'block', label: 'Block [$10000 and above]'},
 ]
 
+const regionOptions = [
+  {value: '', label: 'Select Region'},
+  {value: 'North America', label: 'North America'},
+  {value: 'South America', label: 'South America'},
+  {value: 'Europe', label: 'Europe'},
+  {value: 'Asia', label: 'Asia'},
+  {value: 'Africa', label: 'Africa'},
+]
 
   return (
     <section className="page-center">
       <form onSubmit={handleSubmit} className="form contact-form">
-        {newAlert.show && <Alert {...newAlert} removeAlert={showAlert} />}
         <h2>Registration Form</h2>
+        {newAlert.show && <Alert {...newAlert} removeAlert={showAlert} />}
         <div className="form-row">
           <label htmlFor="firstName" className="form-label">
             <span>
@@ -49,7 +84,7 @@ const colourOptions = [
             </span>
             First Name
           </label>
-          <input type="text" id="firstName" name="firstName" />
+          <input type="text" id="firstName" name="firstName" ref={firstNameRef} />
         </div>
         <div className="form-row">
           <label htmlFor="lastName" className="form-label">
@@ -58,7 +93,7 @@ const colourOptions = [
             </span>
             Last Name
           </label>
-          <input type="text" id="lastName" name="lastName" />
+          <input type="text" id="lastName" name="lastName" ref={lastNameRef} />
         </div>
         <div className="form-row">
           <label htmlFor="email" className="form-label">
@@ -67,7 +102,7 @@ const colourOptions = [
             </span>
             Email
           </label>
-          <input type="email" id="email" name="email" />
+          <input type="email" id="email" name="email" ref={emailRef} />
         </div>
         <div className="form-row">
           <label htmlFor="password" className="form-label">
@@ -76,7 +111,7 @@ const colourOptions = [
             </span>
             Password
           </label>
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" name="password" ref={passwordRef} />
         </div>
         <div className="form-row">
           <label htmlFor="re-password" className="form-label">
@@ -85,81 +120,25 @@ const colourOptions = [
             </span>
             Re-type Password
           </label>
-          <input type="password" id="re-password" name="re-password" />
+          <input type="password" id="re-password" name="re-password" ref={passwordRetypeRef} />
         </div>
-        <div className="">
-          <select>
-            <option>Select Region</option>
-            <option>North America</option>
-            <option>South America</option>
-            <option>Europe</option>
-            <option>Asia</option>
-            <option>Africa</option>
-          </select>
-        </div>
-        <div className="">
-          <select>
-            <option>Select Investment Category</option>
-            <option>$200 and below</option>
-            <option>$1000 to $201</option>
-            <option>$10000 to $1001</option>
-            <option>$100000 to $10001</option>
-            <option>$$100001 and above</option>
-          </select>
-        </div>
+
         <Select
           className="basic-single"
           classNamePrefix="select"
-          defaultValue={colourOptions[0]}
-          isDisabled={isDisabled}
-          isLoading={isLoading}
-          isClearable={isClearable}
-          isRtl={isRtl}
-          isSearchable={isSearchable}
+          value={investmentOptions[0]}
           name="color"
-          options={colourOptions}
+          options={investmentOptions}
+          ref={investmentRef}
         />
-
-        <div
-          style={{
-            color: "hsl(0, 0%, 40%)",
-            display: "inline-block",
-            fontSize: 12,
-            fontStyle: "italic",
-            marginTop: "1em",
-          }}
-        >
-          <Checkbox
-            checked={isClearable}
-            onChange={() => setIsClearable((state) => !state)}
-          >
-            Clearable
-          </Checkbox>
-          <Checkbox
-            checked={isSearchable}
-            onChange={() => setIsSearchable((state) => !state)}
-          >
-            Searchable
-          </Checkbox>
-          <Checkbox
-            checked={isDisabled}
-            onChange={() => setIsDisabled((state) => !state)}
-          >
-            Disabled
-          </Checkbox>
-          <Checkbox
-            checked={isLoading}
-            onChange={() => setIsLoading((state) => !state)}
-          >
-            Loading
-          </Checkbox>
-          <Checkbox
-            checked={isRtl}
-            onChange={() => setIsRtl((state) => !state)}
-          >
-            RTL
-          </Checkbox>
-        </div>
+        <Select
+          className="basic-single"
+          classNamePrefix="select"
+          value={regionOptions[0]}
+          name="color"
+          options={regionOptions}
+          ref={regionalRef}
+        />
 
         <button type="submit" className="btn">
           Submit

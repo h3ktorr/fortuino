@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect, useCallback } from 'react'
 import useFetch from './useFetch';
 // import { useCallback } from 'react'
 
@@ -29,44 +29,25 @@ const AppProvider = ({ children }) => {
   const [btcData, setBtcData] = useState({});
   const [forexData, setForexData] = useState({});
   const [stocksData, setStocksData] = useState({});
-  const [newsData, setNewsData] = useState({
-    btcNews: '',
-    forexNews: ''
-  })
-
-  const getBtcData = () => {
-    const {data} = useFetch(btcUrl)
-    setBtcData(data)
-    console.log(btcData);
-  }
+  const [btcNewsData, setBtcNewsData] = useState([])
+  const [forexNewsData, setForexNewsData] = useState([])
   
-  const getForexData = () => {
-   const {data} = useFetch(forexUrl);
-   setForexData(data)
-   console.log(forexData);
+  // const getNews = async() => {
+  //   try{
+  //     const response = await fetch(NewsUrl.forexNews)
+  //     const data = await response.json()
+  //     // const firstTwo = data.feed.splice(0, 2)
+  //     setForexData(data)
+  //     console.log(forexData)
+  //   }
+  //   catch(err){
+  //     console.log(err)
+  //   }
+  // }
 
-  }
-  
-  const getStocksData = () => {
-    const {data} = useFetch(stocksUrl)
-    setStocksData(data)
-    console.log(stocksData);
-  }
-
-  const getBtcNewsData = () => {
-    const {data} = useFetch(NewsUrl.btcNews)
-    setNewsData(prev => ({...prev, btcNews: data}))
-    console.log(newsData);
-  }
-
-  const getForexNewsData = () => {
-    const {data} = useFetch(NewsUrl.forexNews)
-    setNewsData(prev => ({...prev, forexNews: data}))
-    console.log(newsData);
-
-  }
-
-
+  // useEffect(()=>{
+  //   getNews()
+  // })
 
   const openSubmenu = (text, coordinates) => {
     setIsSubmenuOpen(true)
@@ -99,6 +80,8 @@ const AppProvider = ({ children }) => {
       isSubmenuOpen,
       openSubmenu,
       closeSubmenu,
+      forexNewsData,
+      btcNewsData
     }}
     >
     {children}
