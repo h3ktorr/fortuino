@@ -14,9 +14,9 @@ const stocksUrl =
 const NewsUrl = {
   btcNews:
     "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=CRYPTO:BTC&apikey=05UAM5N0RC4246P9&topic=finance",
-  forexNews:
-    "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=FOREX:USD&apikey=05UAM5N0RC4246P9&topic=finance",
 };
+
+
 
 
 
@@ -27,27 +27,12 @@ const AppProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
   const [btcData, setBtcData] = useState({});
-  const [forexData, setForexData] = useState({});
+  const [forexData, setForexData] = useState([]);
   const [stocksData, setStocksData] = useState({});
   const [btcNewsData, setBtcNewsData] = useState([])
   const [forexNewsData, setForexNewsData] = useState([])
-  
-  // const getNews = async() => {
-  //   try{
-  //     const response = await fetch(NewsUrl.forexNews)
-  //     const data = await response.json()
-  //     // const firstTwo = data.feed.splice(0, 2)
-  //     setForexData(data)
-  //     console.log(forexData)
-  //   }
-  //   catch(err){
-  //     console.log(err)
-  //   }
-  // }
 
-  // useEffect(()=>{
-  //   getNews()
-  // })
+ 
 
   const openSubmenu = (text, coordinates) => {
     setIsSubmenuOpen(true)
