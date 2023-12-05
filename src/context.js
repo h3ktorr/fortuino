@@ -25,28 +25,23 @@ const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false)
-  const [btcData, setBtcData] = useState({});
-  const [forexData, setForexData] = useState([]);
-  const [stocksData, setStocksData] = useState({});
-  const [btcNewsData, setBtcNewsData] = useState([])
-  const [forexNewsData, setForexNewsData] = useState([])
+  // const [btcNewsData, setBtcNewsData] = useState([])
+  // const [btcData, setBtcData] = useState(null);
+  // const [forexData, setForexData] = useState([]);
+  // const [stocksData, setStocksData] = useState({});
+  // const [forexNewsData, setForexNewsData] = useState([]);
 
- 
+//  const getNews = async() => {
+//   const response = await fetch(NewsUrl.btcNews)
+//   const news = await response.json()
+//   setBtcData(news)
+//   console.log(btcData)
+//  }
 
-  const openSubmenu = (text, coordinates) => {
-    setIsSubmenuOpen(true)
-  }
-
-  const closeSubmenu = () => {
-    setIsSubmenuOpen(false)
-  }
+//  useEffect(()=>{
+//   getNews()
+//  }, [])
    
-  // useEffect(()=>{
-  //   getBtcData()
-  //   getForexData()
-  //   getStocksData()
-  // }, [])
   
   const openSidebar = () => {
     setIsSidebarOpen(true)
@@ -62,11 +57,6 @@ const AppProvider = ({ children }) => {
       isSidebarOpen,
       openSidebar,
       closeSidebar,
-      isSubmenuOpen,
-      openSubmenu,
-      closeSubmenu,
-      forexNewsData,
-      btcNewsData
     }}
     >
     {children}
