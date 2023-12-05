@@ -14,14 +14,12 @@ const About = () => {
   const [aboutService, setAboutService] = useState(
     "We help more than 1 million individual and cooperation invest and save"
   );
-  const {openSubmenu, isSubmenuOpen} = useGlobalContext()
 
   const handleDisplay = (e) => {
     const about = e.target.textContent;
     const service = menus.find((item) => item.id === about);
 
     setAboutService(service.text)
-    openSubmenu();
   }
 
   useEffect(()=>{
@@ -169,36 +167,36 @@ const About = () => {
         </div>
         <div className="about-conclusion">
           <h3>Who we serve</h3>
-          <div>
+          <div className='conclusion'>
             <h4>Individual and Family</h4>
             <p>
               Providing choice for those investing for retirement, a new home or
               child education
             </p>
           </div>
-          <div>
+          <div className='conclusion'>
             <h4>Financial Advisors</h4>
             <p>Helping people at all income levels invest for their future</p>
           </div>
-          <div>
+          <div className='conclusion'>
             <h4>Education and Nonprofit organization</h4>
             <p>
               Providing choice for those investing for retirement, a new home or
               child education
             </p>
           </div>
-          <div>
+          <div className='conclusion'>
             <h4>Pension plans</h4>
             <p>
               Managing the retirement saving for teachers, doctors and workers
               and small house owners
             </p>
           </div>
-          <div>
+          <div className='conclusion'>
             <h4>Insurance Companies</h4>
             <p>Supporting people during life most difficult moments</p>
           </div>
-          <div>
+          <div className='conclusion'>
             <h4>Government</h4>
             <p>
               Financing new schools, hospital, road and other projects. helping

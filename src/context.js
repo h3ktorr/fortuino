@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect, useCallback } from 'react'
 import useFetch from './useFetch';
 // import { useCallback } from 'react'
 
+
 const btcUrl =
 "https://alpha-vantage.p.rapidapi.com/query?from_currency=BTC&function=CURRENCY_EXCHANGE_RATE&to_currency=USD";
 
@@ -11,14 +12,12 @@ const forexUrl =
 const stocksUrl =
   "https://alpha-vantage.p.rapidapi.com/query?interval=5min&function=TIME_SERIES_INTRADAY&symbol=MSFT&datatype=json&output_size=compact";
 
+const apiKey = '05UAM5N0RC4246P9'
+
 const NewsUrl = {
   btcNews:
-    "https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=CRYPTO:BTC&apikey=05UAM5N0RC4246P9&topic=finance",
+    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=CRYPTO:BTC&apikey=${apiKey}&topic=finance`,
 };
-
-
-
-
 
 const AppContext = React.createContext()
 

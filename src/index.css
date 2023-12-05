@@ -356,11 +356,12 @@ Home
 
 .doings{
   margin: 30px;
-  width: 500px;
+  width: 350px;
+  text-align: left;
 }
 
 .doings > h3{
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .doings > p{
@@ -417,11 +418,19 @@ Home
     font-size: 30px;
     width: 40rem;
     margin-top: 10px;
-    }
+  }
   
   .welcome-image>p {
     font-size: 30px;
     width: 25rem;
+  }
+  .doings{
+    margin: 30px;
+    width: 500px;
+  }
+  
+  .doings > h3{
+    font-size: 30px;
   }
 }
 
@@ -589,7 +598,7 @@ article.nextSlide {
   border: #000 solid 2px;
   font-size: 20px;
   text-align: center;
-  width: 200px;
+  width: 100px;
   border-radius: 5px;
   transition: var(--mainTransition);
 }
@@ -598,6 +607,8 @@ article.nextSlide {
   background-color: #000;
   color: #fff;
 }
+
+
 
 
 @media (min-width: 800px) {
@@ -616,7 +627,7 @@ article.nextSlide {
 }
 
 .about-icons{
-  font-size: 100px;
+  font-size: 50px;
 }
 
 .services{
@@ -632,11 +643,65 @@ article.nextSlide {
   display: flex;
 }
 
+.about-conclusion{
+  max-width: 350px;
+  background: var(--offWhite);
+  border-radius: 30px;
+  box-shadow: var(--darkShadow);
+  padding: 2rem 1rem;
+  margin: 3rem auto;
+}
+
+.about-conclusion >h3{
+  font-size: 30px;
+  background-color: #00000080;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.conclusion {
+  margin: 30px;
+  text-align: left;
+}
+
+.conclusion>h3 {
+  font-size: 30px;
+}
+
+.conclusion>h4 {
+  font-size: 20px;
+  margin-bottom: 1px;
+}
+
+.conclusion>p {
+  font-size: 20px;
+}
+
 @media screen and (min-width: 800px) {
+  .about-icons{
+    font-size: 100px;
+  }
+  
+  .services>h4 {
+    border: #000 solid 2px;
+    font-size: 20px;
+    text-align: center;
+    width: 200px;
+    border-radius: 5px;
+    transition: var(--mainTransition);
+  }
   .services{
     margin: 0 50px;
   }
+  .about-conclusion{
+    max-width: var(--maxWidth);
+    border-radius: 30px;
+    box-shadow: var(--darkShadow);
+    padding: 2rem 2.5rem;
+    margin: 3rem auto;
+  }
 }
+
 
 /* 
 ====== 
@@ -652,7 +717,7 @@ Submenu
   margin-top: 40px;
   border: #000 solid;
   border-radius: var(--radius);
-  width: 800px;
+  width: 300px;
   font-size: 20px;
   font-weight: 400;
   transition: var(--mainTransition);
@@ -660,6 +725,12 @@ Submenu
 
 .submenu.show {
   display: block;
+}
+
+@media screen and (min-width: 800px) {
+  .submenu{
+    width: 800px;
+  }
 }
 
 /* 

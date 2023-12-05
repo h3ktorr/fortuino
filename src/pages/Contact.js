@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 const Contact = () => {
   return (
     <section className="page-center contact-container">
-      <article className="contact-info">
+      <article className="contact-info"> 
         <h2>Contact us</h2>
         <div>
           <h3>How To Find Us</h3>
