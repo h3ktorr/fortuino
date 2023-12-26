@@ -380,6 +380,15 @@ Home
   margin-bottom: 10px;
 }
 
+.portfolios{
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.portfolios :hover{ 
+    transform: scale(1.02);
+}
+
 .single-portfolio > h3{
   font-size: 25px;
 }
@@ -407,6 +416,7 @@ Home
   .single-portfolio{
     padding: 10px;
   }
+  
   .main-information{
     display: flex;
     justify-content: space-evenly;
