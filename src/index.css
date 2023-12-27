@@ -202,7 +202,7 @@ Sidebar
   height: 100%;
   visibility: hidden;
   z-index: -1;
-  transition: all .5s;
+  transition: all 1s;
 }
 
 .sidebar-wrapper.show{
@@ -216,6 +216,7 @@ Sidebar
   background: #fff;
   display: flex;
   flex-direction: column;
+  transition: all .5s;
 }
 
 .close-sidebar{
@@ -318,7 +319,7 @@ Home
   font-size: 20px;
   background-color: rgba(83, 75, 75, 0.1);
   width: 75%;
-  align-self: center;
+  margin: 30px auto;
   padding: 15px;
   font-weight: bold;
   border-radius: 5px;
@@ -466,10 +467,9 @@ About
 
 .main-about{
   width: 75%;
-  align-self: center;
   background-color: #443737;
   color: #fff;
-  margin: 20px 0;
+  margin: 20px auto;
   border-radius: 10px;
   padding: 10px;
 }
@@ -664,8 +664,7 @@ article.nextSlide {
 
 .about-conclusion >h3{
   font-size: 30px;
-  background-color: #00000080;
-  color: #fff;
+  color: #000;
   border-radius: 5px;
 }
 
@@ -681,6 +680,7 @@ article.nextSlide {
 .conclusion>h4 {
   font-size: 20px;
   margin-bottom: 1px;
+  color: #00000080;
 }
 
 .conclusion>p {
