@@ -1,31 +1,43 @@
-import inclusive from './images/inclusive-economies-au.png'
-import finance from './images/financial-security-au.webp'
-import sustainable from './images/sustainable-outcomes-au.png'
-import investment from './images/investment-access-au.png'
-import benjamin from './images/benjamin.jpg'
-import christopher from './images/christopher.jpg'
-import ryan from './images/ryan.jpg'
+import inclusive from "./images/inclusive-economies-au.png";
+import finance from "./images/financial-security-au.webp";
+import sustainable from "./images/sustainable-outcomes-au.png";
+import investment from "./images/investment-access-au.png";
+import benjamin from "./images/benjamin.jpg";
+import christopher from "./images/christopher.jpg";
+import ryan from "./images/ryan.jpg";
+import { FaHome } from "react-icons/fa";
+import { FcAbout } from "react-icons/fc";
+import { IoMdContact } from "react-icons/io";
+import { FaRegistered } from "react-icons/fa";
+import { GrDocumentPerformance } from "react-icons/gr";
+import { MdPayments } from "react-icons/md";
+import { IoIosPeople } from "react-icons/io";
+import { IoDocumentText } from "react-icons/io5";
 
 export const links = [
   {
     id: 1,
     name: "Home",
     route: "/",
+    icon: <FaHome />,
   },
   {
     id: 2,
     name: "About",
     route: "/about",
+    icon: <FcAbout />,
   },
   {
     id: 3,
     name: "Contact",
     route: "/contact",
+    icon: <IoMdContact />,
   },
   {
     id: 4,
     name: "Register",
     route: "/register",
+    icon: <FaRegistered />,
   },
 ];
 
@@ -34,21 +46,25 @@ export const informations = [
     id: 1,
     name: "Performance Information",
     route: "/performance",
+    icon: <GrDocumentPerformance />,
   },
   {
     id: 2,
     name: "Fee Information",
     route: "/fee",
+    icon: <MdPayments />,
   },
   {
     id: 3,
     name: "Portfolio Managers",
     route: "/managers",
+    icon: <IoIosPeople />,
   },
   {
     id: 4,
     name: "ESG Integration",
     route: "/esg",
+    icon: <IoDocumentText />,
   },
 ];
 

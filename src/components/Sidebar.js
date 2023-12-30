@@ -8,39 +8,35 @@ import { motion } from "framer-motion";
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
 
-  const sidebarVariant = {
-    hidden: {
-      x: "-100vw",
-      opacity: 0,
-    },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.3,
-        delay: 0.2,
-      },
-    },
-  };
+  // const sidebarVariant = {
+  //   hidden: {
+  //     x: "-100vw",
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     x: 0,
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.3,
+  //       delay: 0.2,
+  //     },
+  //   },
+  // };
 
   return (
-    <motion.div
-      className={isSidebarOpen ? "sidebar-wrapper show" : "sidebar-wrapper"}
-      variants={sidebarVariant}
-      initial="hidden"
-      animate="visible"
-    >
-      <motion.aside className="sidebar">
+    <div className={isSidebarOpen ? "sidebar-wrapper show" : "sidebar-wrapper"}>
+      <aside className="sidebar">
         <button className="btn close-sidebar" onClick={closeSidebar}>
           <FaTimes />
         </button>
 
         <ul className="sidebar-links">
           {links.map((link) => {
-            const { id, name, route } = link;
+            const { id, name, route, icon } = link;
             return (
               <li key={id} className="sidebar-link">
                 <Link to={route} onClick={closeSidebar}>
+                  <span>{icon}</span>
                   {name}
                 </Link>
               </li>
@@ -50,18 +46,19 @@ const Sidebar = () => {
 
         <ul>
           {informations.map((item) => {
-            const { id, name, route } = item;
+            const { id, name, route, icon } = item;
             return (
               <li key={id} className="sidebar-link">
                 <Link to={route} onClick={closeSidebar}>
+                  <span>{icon}</span>
                   {name}
                 </Link>
               </li>
             );
           })}
         </ul>
-      </motion.aside>
-    </motion.div>
+      </aside>
+    </div>
   );
 };
 
