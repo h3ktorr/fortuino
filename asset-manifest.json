@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/fortuino/static/css/main.c9dfb990.css",
+    "main.js": "/fortuino/static/js/main.4274d2fa.js",
+    "static/media/benjamin.jpg": "/fortuino/static/media/benjamin.82870c0eb2df7571b5e6.jpg",
+    "static/media/kids-2408614_1280.jpg": "/fortuino/static/media/kids-2408614_1280.e9976ffd8b4c98704fec.jpg",
+    "static/media/ryan.jpg": "/fortuino/static/media/ryan.0d61f59d83589bc97427.jpg",
+    "static/media/christopher.jpg": "/fortuino/static/media/christopher.45ef8c02e617779457e9.jpg",
+    "static/media/inclusive-economies-au.png": "/fortuino/static/media/inclusive-economies-au.9b4558aa917430b38748.png",
+    "static/media/financial-security-au.webp": "/fortuino/static/media/financial-security-au.86e991c105b12707e7e2.webp",
+    "static/media/sustainable-outcomes-au.png": "/fortuino/static/media/sustainable-outcomes-au.605ff2abb1514f2a3ead.png",
+    "static/media/investment-access-au.png": "/fortuino/static/media/investment-access-au.710abe39e961b6847e70.png",
+    "static/media/fortuino.png": "/fortuino/static/media/fortuino.8a07482d229fa444f90e.png",
+    "index.html": "/fortuino/index.html",
+    "main.c9dfb990.css.map": "/fortuino/static/css/main.c9dfb990.css.map",
+    "main.4274d2fa.js.map": "/fortuino/static/js/main.4274d2fa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9dfb990.css",
+    "static/js/main.4274d2fa.js"
+  ]
+}
